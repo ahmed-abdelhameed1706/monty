@@ -2,7 +2,7 @@
 
 /**
  * read_file - reads a file
- * @file: file to be read
+ * @filename: file name to read from
  *
  * Return: array of strings
  */
@@ -17,10 +17,10 @@ char **read_file(char *filename)
 	if (file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
-        exit(EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 
-	while(getline(&line, &n, file) != -1)
+	while (getline(&line, &n, file) != -1)
 		lines_count++;
 
 	fseek(file, 0, SEEK_SET);
@@ -33,7 +33,7 @@ char **read_file(char *filename)
 		exit(EXIT_FAILURE);
 	}
 
-	while(getline(&line, &n, file) != -1)
+	while (getline(&line, &n, file) != -1)
 	{
 		lines[i] = line;
 		line = NULL;
