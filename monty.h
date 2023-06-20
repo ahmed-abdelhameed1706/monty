@@ -13,6 +13,9 @@
 
 /* Prototypes */
 char **read_file(FILE *file);
+char **get_token(char *str);
+size_t get_command_size(char *str);
+void free_tokens(char **tokens);
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
