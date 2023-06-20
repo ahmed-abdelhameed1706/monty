@@ -23,8 +23,7 @@ int main(int argc, char **argv)
 	for (i = 0; lines[i]; i++)
 	{
 		tokens = get_tokens(lines[i]);
-		printf("token1: %s\n", tokens[0]);
-		printf("token2: %s\n", tokens[1]);
+		execute_op(tokens);
 		free_tokens(tokens);
 	}
 	free_tokens(lines);
