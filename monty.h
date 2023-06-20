@@ -46,8 +46,8 @@ char **read_file(char *filename);
 char **get_tokens(char *str);
 size_t get_command_size(char *str);
 void free_tokens(char **tokens);
-void execute_op(char **command);
-void push(stack_t **stack, unsigned int line_number);
+void execute_op(char **command, unsigned int line_number);
+void push(stack_t **stack, unsigned int line_number, char *data);
 void pall(stack_t **stack, unsigned int line_number);
 
 #endif
