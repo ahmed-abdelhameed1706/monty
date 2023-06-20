@@ -12,7 +12,7 @@
 #include <fcntl.h>
 
 /* Prototypes */
-char **read_file(FILE *file);
+char **read_file(char *filename);
 char **get_tokens(char *str);
 size_t get_command_size(char *str);
 void free_tokens(char **tokens);
