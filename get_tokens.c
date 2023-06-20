@@ -34,7 +34,7 @@ size_t get_command_size(char *str)
 char **get_tokens(char *str)
 {
 	int i;
-	char **command, *temp = strdup(str), *token;
+	char **command, *temp, *token;
 	size_t size = 0;
 
 	size = get_command_size(str);
@@ -42,26 +42,19 @@ char **get_tokens(char *str)
 	command = malloc(sizeof(char *) * (size + 1));
 	if (!command)
 		return (NULL);
-	for (i = 0; str[i] != ' '; i++)
-	{
-		if (!str[i])
-		{
-			token = strtok(temp, "\n");
-			command[0] = strdup(token);
-			command[1] = NULL;
-			return (command);
-		}
-	}
-	token = strtok(temp, " ");
+	for (i = 0; str[i] == ' '; i++)
+	;
+	temp = strdup(&(str[i]));
+	token = strtok(temp, " \n");
 	command[0] = strdup(token);
-	for (; str[i] != ' '; i++)
+	if (strcmp(token, "push") != 0)
 	{
-		if (!str[i])
-		{
-			command[1] = NULL;
-			return (command);
-		}
+		command[1] = NULL;
+		return (command);
 	}
+
+	for (; str[i] != ' '; i++)
+	;
 	free(temp);
 	str = &(str[i + 1]);
 	token = strtok(str, " \n");
