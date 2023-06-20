@@ -9,9 +9,9 @@
 char **read_file(FILE *file)
 {
 	char **lines = NULL, *line = NULL;
-	size_t n = 0, i = 0, lines_count =0, line_read;
+	size_t n = 0, i = 0, lines_count = 0;
 
-	while((line_read = getline(&line, &n, file)) != -1)
+	while(getline(&line, &n, file) != -1)
 		lines_count++;
 
 	fseek(file, 0, SEEK_SET);
@@ -24,7 +24,7 @@ char **read_file(FILE *file)
 		exit(EXIT_FAILURE);
 	}
 
-	while((line_read = getline(&line, &n, file)) != -1)
+	while(getline(&line, &n, file) != -1)
 	{
 		lines[i] = line;
 		line = NULL;
