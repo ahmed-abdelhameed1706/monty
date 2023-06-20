@@ -9,9 +9,8 @@
  */
 int main(int argc, char **argv)
 {
-	FILE *file;
-	char **lines = NULL;
-	int i = 0;
+	char **lines = NULL, **tokens = NULL;
+	int i;
 
 	if (argc != 2)
 	{
@@ -19,21 +18,15 @@ int main(int argc, char **argv)
         	exit(EXIT_FAILURE);
 	}
 
-	file = fopen(argv[1], "r");
+	lines = read_file(argv[1]);
 
-	if (file == NULL)
+	for (i = 0; lines[i]; i++)
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-        	exit(EXIT_FAILURE);
+		tokens = get_tokens(lines[i]);
+		printf("token1: %s\n", tokens[0]);
+		printf("token2: %s\n", tokens[1]);
+		free_tokens(tokens);
 	}
-
-	lines = read_file(file);
-
-	while (lines[i] != NULL)
-	{
-		printf("%s\n", lines[i]);
-		i++;
-	}
-
+	free_tokens(lines);
 	return (0);
 }
