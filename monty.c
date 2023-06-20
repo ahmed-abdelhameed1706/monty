@@ -34,4 +34,6 @@ int main(int argc, char **argv)
 		printf("%s\n", lines[i]);
 		i++;
 	}
+
+	return (0);
 }
