@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 	if (argc != 2)
 	{
 		fprintf(stderr, "Usage: monty file\n");
-        	exit(EXIT_FAILURE);
+        exit(EXIT_FAILURE);
 	}
 
 	lines = read_file(argv[1]);
@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 	for (i = 0; lines[i]; i++)
 	{
 		tokens = get_tokens(lines[i]);
-		execute_op(tokens);
+		execute_op(tokens, i + 1);
 		free_tokens(tokens);
 	}
 	free_tokens(lines);
