@@ -6,10 +6,19 @@
  *
  * Return: array of strings
  */
-char **read_file(FILE *file)
+char **read_file(char *filename)
 {
+	FILE *file;
 	char **lines = NULL, *line = NULL;
 	size_t n = 0, i = 0, lines_count = 0;
+
+	file = fopen(filename, "r");
+
+	if (file == NULL)
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", filename);
+        exit(EXIT_FAILURE);
+	}
 
 	while(getline(&line, &n, file) != -1)
 		lines_count++;
