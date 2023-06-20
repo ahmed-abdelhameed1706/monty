@@ -11,11 +11,6 @@
 #include <string.h>
 #include <fcntl.h>
 
-/* Prototypes */
-char **read_file(char *filename);
-char **get_tokens(char *str);
-size_t get_command_size(char *str);
-void free_tokens(char **tokens);
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -45,5 +40,14 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+/* Prototypes */
+char **read_file(char *filename);
+char **get_tokens(char *str);
+size_t get_command_size(char *str);
+void free_tokens(char **tokens);
+void execute_op(char **command);
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
 
 #endif
