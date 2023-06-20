@@ -33,7 +33,7 @@ size_t get_command_size(char *str)
 */
 char **get_tokens(char *str)
 {
-	int is_str = 0, i;
+	int i;
 	char **command, *temp = strdup(str), *token;
 	size_t size = 0;
 
