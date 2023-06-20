@@ -2,7 +2,10 @@
 
 /**
  * get_command_size - get command size to allocate
- * 
+ * @str: given command
+ *
+ * Return: command size
+*/
 size_t get_command_size(char *str)
 {
 	int i, is_str = 0;
@@ -28,7 +31,7 @@ size_t get_command_size(char *str)
  *
  * Return: command tokens
 */
-char **get_token(char *str)
+char **get_tokens(char *str)
 {
 	int is_str = 0, i;
 	char **command, *temp = strdup(str), *token;

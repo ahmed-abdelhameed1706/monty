@@ -13,7 +13,7 @@
 
 /* Prototypes */
 char **read_file(FILE *file);
-char **get_token(char *str);
+char **get_tokens(char *str);
 size_t get_command_size(char *str);
 void free_tokens(char **tokens);
 /**
