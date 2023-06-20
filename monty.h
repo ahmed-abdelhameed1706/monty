@@ -1,6 +1,18 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+/* Includes */
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <stddef.h>
+#include <errno.h>
+#include <unistd.h>
+#include <string.h>
+#include <fcntl.h>
+
+/* Prototypes */
+char **read_file(FILE *file);
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
