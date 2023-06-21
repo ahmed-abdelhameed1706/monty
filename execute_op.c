@@ -30,7 +30,9 @@ void execute_op(stack_t **top, char **lines, char **command, unsigned int l_num)
 			return;
 		}
 	}
-
+	free_dlist(*top);
+	free_tokens(lines);
 		fprintf(stderr, "L%d: unknown instruction %s", l_num, command[0]);
+	free_tokens(command);
 		exit(EXIT_FAILURE);
 }
