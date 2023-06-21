@@ -19,7 +19,7 @@ void execute_op(stack_t **top, char **lines, char **cmd, unsigned int l_num)
 
 	if (strcmp(cmd[0], "push") == 0)
 	{
-		push(&(*top), lines, l_num, cmd[1]);
+		push(&(*top), lines, l_num, cmd);
 		return;
 	}
 

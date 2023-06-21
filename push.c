@@ -5,12 +5,12 @@
  * push - add node to the Stack/Queue
  * @stack: given stack/queue
  * @lines: given file lines to free
- * @line_number: given command line number
+ * @line_num: given command line number
  * @data: given node data
  *
  * Return: Nothing
 */
-void push(stack_t **stack, char **lines, unsigned int line_number, char *data)
+void push(stack_t **stack, char **lines, unsigned int line_num, char **data)
 {
 	stack_t *new_stack;
 	int data_num;
@@ -20,22 +20,25 @@ void push(stack_t **stack, char **lines, unsigned int line_number, char *data)
 	{
 		free_tokens(lines);
 		free_dlist(*stack);
+		free_tokens(data);
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	data_num = atoi(data);
-	if (strcmp(data, "nil") == 0 || data_num == 0)
+	data_num = atoi(data[1]);
+	if (strcmp(data[1], "nil") == 0 || data_num == 0)
 	{
 		free_tokens(lines);
 		free_dlist(*stack);
-		fprintf(stderr, "%d: usage: push integer\n", line_number);
+		free_tokens(data);
+		free(new_stack);
+		fprintf(stderr, "%d: usage: push integer\n", line_num);
 		exit(EXIT_FAILURE);
 	}
 
 	new_stack->n = data_num;
 	new_stack->prev = NULL;
 
-	if (!stack)
+	if (!stack || !(*stack))
 		new_stack->next = NULL;
 
 	else

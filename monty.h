@@ -48,7 +48,7 @@ size_t get_command_size(char *str);
 void free_tokens(char **tokens);
 void free_dlist(stack_t *top);
 void execute_op(stack_t **top, char **lines, char **cmd, unsigned int l_num);
-void push(stack_t **stack, char **lines, unsigned int line_number, char *data);
+void push(stack_t **stack, char **lines, unsigned int line_num, char **data);
 void pall(stack_t **stack, unsigned int line_number);
 
 #endif
