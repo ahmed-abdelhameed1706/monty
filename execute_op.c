@@ -17,11 +17,20 @@ void execute_op(stack_t **top, char **command, unsigned int line_number)
 	int i;
 
 	if (strcmp(command[0], "push") == 0)
+	{
 		push(&(*top), line_number, command[1]);
+		return;
+	}
 
 	for (i = 0; op_list[i].opcode; i++)
 	{
 		if (strcmp(command[0], op_list[i].opcode) == 0)
+		{
 			op_list[i].f(&(*top), line_number);
+			return;
+		}
 	}
+
+		fprintf(stderr, "L%d: unknown instruction %s", line_number, command[0]);
+		exit(EXIT_FAILURE);
 }
