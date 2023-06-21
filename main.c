@@ -25,9 +25,10 @@ int main(int argc, char **argv)
 	for (i = 0; lines[i]; i++)
 	{
 		tokens = get_tokens(lines[i], lines, top);
-		execute_op(&top, tokens, i + 1);
+		execute_op(&top, lines, tokens, i + 1);
 		free_tokens(tokens);
 	}
 	free_tokens(lines);
+	free_dlist(top);
 	return (0);
 }
