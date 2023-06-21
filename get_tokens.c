@@ -59,6 +59,7 @@ char **get_tokens(char *str, char **lines, stack_t *stack)
 	command[0] = strdup(token);
 	if (strcmp(token, "push") != 0)
 	{
+		free(temp);
 		command[1] = NULL;
 		return (command);
 	}
