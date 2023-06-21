@@ -31,6 +31,8 @@ size_t get_command_size(char *str)
 /**
  * get_tokens - get command tokens
  * @str: given command
+ * @lines: given file lines to free
+ * @stack: given stack to free
  *
  * Return: command tokens
 */
@@ -48,7 +50,7 @@ char **get_tokens(char *str, char **lines, stack_t *stack)
 		free_tokens(lines);
 		free_dlist(stack);
 		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);	
+		exit(EXIT_FAILURE);
 	}
 	for (i = 0; str[i] == ' '; i++)
 	;
