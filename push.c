@@ -24,8 +24,7 @@ void push(stack_t **stack, char **lines, unsigned int line_num, char **data)
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	data_num = atoi(data[1]);
-	if (strcmp(data[1], "nil") == 0 || data_num == 0)
+	if (!str_isdigit(data[1]))
 	{
 		free_tokens(lines);
 		free_dlist(*stack);
@@ -35,6 +34,7 @@ void push(stack_t **stack, char **lines, unsigned int line_num, char **data)
 		exit(EXIT_FAILURE);
 	}
 
+	data_num = atoi(data[1]);
 	new_stack->n = data_num;
 	new_stack->prev = NULL;
 
