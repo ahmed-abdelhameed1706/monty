@@ -10,7 +10,7 @@
  */
 int main(int argc, char **argv)
 {
-	stack_t *top;
+	stack_t *top = NULL;
 	char **lines = NULL, **tokens = NULL;
 	int i;
 
@@ -24,7 +24,7 @@ int main(int argc, char **argv)
 
 	for (i = 0; lines[i]; i++)
 	{
-		tokens = get_tokens(lines[i]);
+		tokens = get_tokens(lines[i], lines, top);
 		execute_op(&top, tokens, i + 1);
 		free_tokens(tokens);
 	}
