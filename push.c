@@ -28,7 +28,7 @@ void push(stack_t **stack, char **lines, unsigned int line_number, char *data)
 	{
 		free_tokens(lines);
 		free_dlist(*stack);
-		fprintf(stderr, "%d: usage: push integer", line_number);
+		fprintf(stderr, "%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 

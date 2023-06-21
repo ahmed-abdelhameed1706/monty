@@ -33,7 +33,7 @@ void execute_op(stack_t **top, char **lines, char **cmd, unsigned int l_num)
 	}
 	free_dlist(*top);
 	free_tokens(lines);
-	fprintf(stderr, "L%d: unknown instruction %s", l_num, cmd[0]);
+	fprintf(stderr, "L%d: unknown instruction %s\n", l_num, cmd[0]);
 	free_tokens(cmd);
 	exit(EXIT_FAILURE);
 }
