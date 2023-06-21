@@ -42,6 +42,7 @@ char **read_file(char *filename)
 
 	lines[i] = NULL;
 
+	fclose(file);
 	free(line);
 	return (lines);
 }
