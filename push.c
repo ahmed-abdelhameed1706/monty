@@ -21,7 +21,7 @@ void push(stack_t **stack, unsigned int line_number, char *data)
 		exit(EXIT_FAILURE);
 	}
 	data_num = atoi(data);
-	if (!data || data_num == 0)
+	if (strcmp(data, "nil") == 0 || data_num == 0)
 	{
 		fprintf(stderr, "%d: usage: push integer", line_number);
 		exit(EXIT_FAILURE);
