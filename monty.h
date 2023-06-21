@@ -50,5 +50,6 @@ void free_dlist(stack_t *top);
 void execute_op(stack_t **top, char **lines, char **cmd, unsigned int l_num);
 void push(stack_t **stack, char **lines, unsigned int line_num, char **data);
 void pall(stack_t **stack, unsigned int line_number);
-
+char *strdup(const char *s);
+ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 #endif
