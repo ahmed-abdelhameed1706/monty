@@ -22,6 +22,9 @@ size_t get_command_size(char *str)
 			is_str = 0;
 	}
 
+	if (size == 3)
+		size--;
+
 	return (size);
 }
 
@@ -31,7 +34,7 @@ size_t get_command_size(char *str)
  *
  * Return: command tokens
 */
-char **get_tokens(char *str)
+char **get_tokens(char *str, char **lines, stack_t *stack)
 {
 	int i;
 	char **command, *temp, *token;
@@ -41,7 +44,12 @@ char **get_tokens(char *str)
 
 	command = malloc(sizeof(char *) * (size + 1));
 	if (!command)
-		return (NULL);
+	{
+		free_tokens(lines);
+		free_dlist(stack);
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);	
+	}
 	for (i = 0; str[i] == ' '; i++)
 	;
 	temp = strdup(&(str[i]));
@@ -54,7 +62,13 @@ char **get_tokens(char *str)
 	}
 
 	for (; str[i] != ' '; i++)
-	;
+	{
+		if (!str[i])
+		{
+			command[1] = strdup("nil");
+			return (command);
+		}
+	}
 	free(temp);
 	str = &(str[i + 1]);
 	token = strtok(str, " \n");
