@@ -10,3 +10,6 @@
 
 #monty ignore
 *.m
+
+flags
+monty
