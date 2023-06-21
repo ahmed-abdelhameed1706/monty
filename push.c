@@ -31,7 +31,7 @@ void push(stack_t **stack, char **lines, unsigned int line_num, char **data)
 		free_dlist(*stack);
 		free_tokens(data);
 		free(new_stack);
-		fprintf(stderr, "L%d: usage: push integer\n", line_num);
+		printf("L%d: usage: push integer\n", line_num);
 		exit(EXIT_FAILURE);
 	}
 
