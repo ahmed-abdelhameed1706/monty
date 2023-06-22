@@ -21,6 +21,7 @@ int execute(char *cmd, int line_num, stack_t **stack)
 		{"swap", swap},
 		{"pop", pop},
 		{"sub", sub},
+		{"div", _div},
 		{NULL, NULL}
 	};
 
