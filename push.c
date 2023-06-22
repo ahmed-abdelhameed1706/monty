@@ -14,7 +14,7 @@ void push(stack_t **stack, unsigned int line_num)
 
 	if (gv.global_arg == NULL)
 	{
-		printf("L%u: usage: push integer\n", line_num);
+		fprintf(stderr, "L%u: usage: push integer\n", line_num);
 		free_tokens(gv.tokens);
 		free_tokens(gv.lines);
 		free_dlistint(*stack);
@@ -24,7 +24,7 @@ void push(stack_t **stack, unsigned int line_num)
 	{
 		if (!isdigit(gv.global_arg[i]))
 		{
-			printf("L%u: usage: push integer\n", line_num);
+			fprintf(stderr, "L%u: usage: push integer\n", line_num);
 			free_tokens(gv.tokens);
 			free_tokens(gv.lines);
 			free_dlistint(*stack);
@@ -36,7 +36,7 @@ void push(stack_t **stack, unsigned int line_num)
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
-		printf("Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		free_tokens(gv.tokens);
 		free_tokens(gv.lines);
 		free_dlistint(*stack);
