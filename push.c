@@ -1,5 +1,36 @@
 #include "monty.h"
 
+
+/**
+ * add_node - add node to the top of the stack
+ * @stack: top of the stack
+ * @data: new node data
+ *
+ * Return: Nothing
+*/
+void add_node(stack_t **stack, int data)
+{
+	stack_t *new_node, *temp;
+
+	temp = *stack;
+	new_node = malloc(sizeof(stack_t));
+	if (new_node == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		free_tokens(gv.tokens);
+		free_tokens(gv.lines);
+		free_dlistint(*stack);
+		exit(EXIT_FAILURE);
+	}
+
+	if (temp)
+		temp->prev = new_node;
+	new_node->n = n;
+	new_node->prev = NULL;
+	new_node->next = *stack;
+	*stack = new_node;
+}
+
 /**
  * push - pushed int to the stack
  * @stack: stack to push ints in
@@ -10,7 +41,6 @@
 void push(stack_t **stack, unsigned int line_num)
 {
 	int i = 0, n;
-	stack_t *new_node;
 
 	if (gv.global_arg == NULL)
 	{
@@ -37,24 +67,5 @@ void push(stack_t **stack, unsigned int line_num)
 		}
 	}
 	n = atoi(gv.global_arg);
-
-	new_node = malloc(sizeof(stack_t));
-	if (new_node == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		free_tokens(gv.tokens);
-		free_tokens(gv.lines);
-		free_dlistint(*stack);
-		exit(EXIT_FAILURE);
-	}
-
-	new_node->n = n;
-	new_node->prev = NULL;
-	new_node->next = NULL;
-	if (*stack)
-	{
-		(*stack)->prev = new_node;
-		new_node->next = *stack;
-	}
-	*stack = new_node;
+	add_node(stack, n);
 }

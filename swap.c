@@ -4,8 +4,8 @@
  * swap - swaps 2 n from stack
  * @stack: stack to be added from
  * @line_num : line number
- * 
- * Return: Nothing 
+ *
+ * Return: Nothing
  */
 void swap(stack_t **stack, unsigned int line_num)
 {

@@ -48,8 +48,9 @@ typedef struct instruction_s
  * @global_arg: arg to be passed everywhere
  * @line: line to be freed
  * @tokens: to be freed
+ * @lines: given file lines to free
  *
- * Description: global variables 
+ * Description: global variables
  */
 typedef struct global_variables
 {
@@ -86,4 +87,5 @@ void swap(stack_t **stack, unsigned int line_num);
 void pop(stack_t **stack, unsigned int line_num);
 void sub(stack_t **stack, unsigned int line_num);
 void _div(stack_t **stack, unsigned int line_num);
+void add_node(stack_t **stack, int data);
 #endif

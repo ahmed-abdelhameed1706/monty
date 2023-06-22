@@ -1,5 +1,12 @@
 #include "monty.h"
 
+/**
+ * pop - pop top node from the stack
+ * @stack: given stack
+ * @line_num: given file command line
+ *
+ * Return: Nothing
+*/
 void pop(stack_t **stack, unsigned int line_num)
 {
 	stack_t *temp;

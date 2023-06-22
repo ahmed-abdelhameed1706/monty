@@ -25,7 +25,6 @@ char **read_file(char *filename)
 
 	fseek(file, 0, SEEK_SET);
 	lines = malloc(sizeof(char *) * (lines_count + 1));
-
 	if (lines == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
@@ -46,7 +45,6 @@ char **read_file(char *filename)
 	}
 
 	lines[i] = NULL;
-
 	fclose(file);
 	free(line);
 	return (lines);
