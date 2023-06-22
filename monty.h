@@ -79,4 +79,5 @@ char *remove_spaces(char *input);
 char *strtok(char *str, const char *delim);
 int execute(char *cmd, int line_num, stack_t **stack);
 void free_dlistint(stack_t *head);
+void nop(stack_t **stack, unsigned int line_num);
 #endif
