@@ -25,7 +25,7 @@ void add_node(stack_t **stack, int data)
 
 	if (temp)
 		temp->prev = new_node;
-	new_node->n = n;
+	new_node->n = data;
 	new_node->prev = NULL;
 	new_node->next = *stack;
 	*stack = new_node;
