@@ -1,5 +1,6 @@
 #include "monty.h"
 
+gv_t gv;
 
 /**
  * main - entry point to the program
@@ -8,9 +9,6 @@
  *
  * Return: 0 on success
  */
-
-char *global_arg;
-
 int main(int argc, char **argv)
 {
 	char **lines = NULL, *line = NULL, **tokens = NULL;
@@ -32,13 +30,16 @@ int main(int argc, char **argv)
 		if (strcmp(line, "") != 0)
 		{
 			tokens = get_tokens(line);
+			free(line);
 			execute(tokens[0], i + 1, &stack);
 			free_tokens(tokens);
 		}
-		free(line);
+		else
+			free(line);
 	}
 	free(line);
-	free(global_arg);
+	free(gv.global_arg);
+	free(stack);
 	free_tokens(lines);
 	return (0);
 }
