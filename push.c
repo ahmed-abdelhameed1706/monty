@@ -20,15 +20,18 @@ void push(stack_t **stack, unsigned int line_num)
 		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
 	}
-	for (i = 0; gv.global_arg[i] != '\0'; i++)
+	else
 	{
-		if (!isdigit(gv.global_arg[i]))
+		for (i = 0; gv.global_arg[i] != '\0'; i++)
 		{
-			fprintf(stderr, "L%u: usage: push integer\n", line_num);
-			free_tokens(gv.tokens);
-			free_tokens(gv.lines);
-			free_dlistint(*stack);
-			exit(EXIT_FAILURE);
+			if (!isdigit(gv.global_arg[i]))
+			{
+				fprintf(stderr, "L%u: usage: push integer\n", line_num);
+				free_tokens(gv.tokens);
+				free_tokens(gv.lines);
+				free_dlistint(*stack);
+				exit(EXIT_FAILURE);
+			}
 		}
 	}
 	n = atoi(gv.global_arg);

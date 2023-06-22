@@ -22,10 +22,13 @@ int execute(char *cmd, int line_num, stack_t **stack)
 	{
 		if (strcmp(cmd, op_list[i].opcode) == 0)
 		{
-			op_list[i].f(&(*stack), line_num);
+			op_list[i].f(stack, line_num);
 			return (0);
 		}
 	}
 	fprintf(stderr, "L%u: unknown instruction %s\n", line_num, cmd);
-	return (EXIT_FAILURE);
+	free_tokens(gv.tokens);
+	free_dlistint(*stack);
+	free_tokens(gv.lines);
+	exit(EXIT_FAILURE);
 }
