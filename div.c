@@ -16,7 +16,7 @@ void _div(stack_t **stack, unsigned int line_num)
 
 	if (temp == NULL || temp->next == NULL)
 	{
-		fprintf(stderr, "L%u: can't add, stack too short\n", line_num);
+		fprintf(stderr, "L%u: can't div, stack too short\n", line_num);
 		free_dlistint(*stack);
 		free_tokens(gv.tokens);
 		free_tokens(gv.lines);
