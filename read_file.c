@@ -44,9 +44,7 @@ char **read_file(char *filename)
 		strcpy(lines[i], line);
 		i++;
 	}
-
 	lines[i] = NULL;
-
 	fclose(file);
 	free(line);
 	return (lines);

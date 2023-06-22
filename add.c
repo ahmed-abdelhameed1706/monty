@@ -4,8 +4,8 @@
  * add - adds 2 n from stack
  * @stack: stack to be added from
  * @line_num : line number
- * 
- * Return: Nothing 
+ *
+ * Return: Nothing
  */
 void add(stack_t **stack, unsigned int line_num)
 {

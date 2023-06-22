@@ -16,7 +16,7 @@ void pall(stack_t **stack, unsigned int line_num)
 
 	(void)line_num;
 
-	if(temp == NULL)
+	if (temp == NULL)
 		return;
 
 	while (temp != NULL)

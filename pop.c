@@ -1,5 +1,12 @@
 #include "monty.h"
 
+/**
+ * pop - removes element
+ * @stack: stack to remove element from
+ * @line_num: line number
+ *
+ * Return: nothing
+ */
 void pop(stack_t **stack, unsigned int line_num)
 {
 	stack_t *temp;
