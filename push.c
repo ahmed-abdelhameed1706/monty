@@ -24,7 +24,7 @@ void push(stack_t **stack, unsigned int line_num)
 	{
 		for (i = 0; gv.global_arg[i] != '\0'; i++)
 		{
-			if (!isdigit(gv.global_arg[i]))
+			if (!isdigit(gv.global_arg[i]) && gv.global_arg[i] != '-')
 			{
 				fprintf(stderr, "L%u: usage: push integer\n", line_num);
 				free_tokens(gv.tokens);
