@@ -15,6 +15,8 @@ void push(stack_t **stack, unsigned int line_num)
 	if (gv.global_arg == NULL)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_num);
+		free_tokens(gv.tokens);
+		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
 	}
 
@@ -23,6 +25,8 @@ void push(stack_t **stack, unsigned int line_num)
 		if (!isdigit(gv.global_arg[i]))
 		{
 			fprintf(stderr, "L%u: usage: push integer\n", line_num);
+			free_tokens(gv.tokens);
+			free_dlistint(*stack);
 			exit(EXIT_FAILURE);
 		}
 	}
@@ -33,6 +37,8 @@ void push(stack_t **stack, unsigned int line_num)
 	if (new_node == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		free_tokens(gv.tokens);
+		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
 	}
 

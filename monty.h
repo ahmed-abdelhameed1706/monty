@@ -47,6 +47,7 @@ typedef struct instruction_s
  * struct global_variables - contains the global variables
  * @global_arg: arg to be passed everywhere
  * @line: line to be freed
+ * @tokens: to be freed
  *
  * Description: global variables 
  */
@@ -54,6 +55,7 @@ typedef struct global_variables
 {
 	char *global_arg;
 	char *line;
+	char **tokens;
 } gv_t;
 
 /* Global Variables */
@@ -75,4 +77,5 @@ ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 char *remove_spaces(char *input);
 char *strtok(char *str, const char *delim);
 int execute(char *cmd, int line_num, stack_t **stack);
+void free_dlistint(stack_t *head);
 #endif

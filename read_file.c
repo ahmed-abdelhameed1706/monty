@@ -17,6 +17,7 @@ char **read_file(char *filename)
 	if (file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
+		fclose(file);
 		exit(EXIT_FAILURE);
 	}
 
@@ -29,6 +30,7 @@ char **read_file(char *filename)
 	if (lines == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		fclose(file);
 		exit(EXIT_FAILURE);
 	}
 	while (getline(&line, &n, file) != -1)
@@ -37,6 +39,7 @@ char **read_file(char *filename)
 		if (lines[i] == NULL)
 		{
 			fprintf(stderr, "Error: malloc failed\n");
+			fclose(file);
 			exit(EXIT_FAILURE);
 		}
 		strcpy(lines[i], line);

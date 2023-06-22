@@ -31,6 +31,7 @@ int main(int argc, char **argv)
 		{
 			tokens = get_tokens(line);
 			free(line);
+			gv.tokens = tokens;
 			execute(tokens[0], i + 1, &stack);
 			free_tokens(tokens);
 		}
@@ -39,7 +40,7 @@ int main(int argc, char **argv)
 	}
 	free(line);
 	free(gv.global_arg);
-	free(stack);
+	free_dlistint(stack);
 	free_tokens(lines);
 	return (0);
 }
