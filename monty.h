@@ -1,6 +1,8 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#define _POSIX_C_SOURCE 200809L
+
 /* Includes */
 
 #include <stdlib.h>
@@ -41,15 +43,23 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/* Global Variables */
+extern char *global_arg;
+
 /* Prototypes */
+int isdigit(int arg);
+int isspace(int argument);
 char **read_file(char *filename);
-char **get_tokens(char *str, char **lines, stack_t *stack);
+char **get_tokens(char *str);
 size_t get_command_size(char *str);
 void free_tokens(char **tokens);
 void free_dlist(stack_t *top);
 void execute_op(stack_t **top, char **lines, char **cmd, unsigned int l_num);
-void push(stack_t **stack, char **lines, unsigned int line_num, char **data);
-void pall(stack_t **stack, unsigned int line_number);
+void push(stack_t **stack, unsigned int line_num);
+void pall(stack_t **stack, unsigned int line_num);
 char *strdup(const char *s);
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
+char *remove_spaces(char *input);
+char *strtok(char *str, const char *delim);
+int execute(char *cmd, int line_num, stack_t **stack);
 #endif

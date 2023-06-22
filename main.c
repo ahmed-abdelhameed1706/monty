@@ -8,11 +8,14 @@
  *
  * Return: 0 on success
  */
+
+char *global_arg;
+
 int main(int argc, char **argv)
 {
-	stack_t *top = NULL;
-	char **lines = NULL, **tokens = NULL;
+	char **lines = NULL, *line = NULL, **tokens = NULL;
 	int i;
+	stack_t *stack = NULL;
 
 	if (argc != 2)
 	{
@@ -24,11 +27,18 @@ int main(int argc, char **argv)
 
 	for (i = 0; lines[i]; i++)
 	{
-		tokens = get_tokens(lines[i], lines, top);
-		execute_op(&top, lines, tokens, i + 1);
-		free_tokens(tokens);
+		line = remove_spaces(lines[i]);
+		free(lines[i]);
+		if (strcmp(line, "") != 0)
+		{
+			tokens = get_tokens(line);
+			execute(tokens[0], i + 1, &stack);
+			free_tokens(tokens);
+		}
+		free(line);	
 	}
+	free(line);
+	free(global_arg);
 	free_tokens(lines);
-	free_dlist(top);
 	return (0);
 }

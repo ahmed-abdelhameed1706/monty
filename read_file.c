@@ -35,8 +35,13 @@ char **read_file(char *filename)
 
 	while (getline(&line, &n, file) != -1)
 	{
-		lines[i] = line;
-		line = NULL;
+		lines[i] = malloc(sizeof(char) * (strlen(line) + 1));
+		if (lines[i] == NULL)
+		{
+			fprintf(stderr, "Error: malloc failed\n");
+			exit(EXIT_FAILURE);
+		}
+		strcpy(lines[i], line);
 		i++;
 	}
 

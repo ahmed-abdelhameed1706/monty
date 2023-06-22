@@ -1,50 +1,46 @@
 #include "monty.h"
 
-
 /**
- * push - add node to the Stack/Queue
- * @stack: given stack/queue
- * @lines: given file lines to free
- * @line_num: given command line number
- * @data: given node data
+ * push - pushed int to the stack
+ * @stack: stack to push ints in
+ * @line_num: line number to handle errors
  *
- * Return: Nothing
-*/
-void push(stack_t **stack, char **lines, unsigned int line_num, char **data)
+ * Return: nothing
+ */
+void push(stack_t **stack, unsigned int line_num)
 {
-	stack_t *new_stack;
-	int data_num;
+	int i, n;
+	stack_t *new_node;
 
-	new_stack = malloc(sizeof(stack_t));
-	if (!new_stack)
+	if (global_arg == NULL)
 	{
-		free_tokens(lines);
-		free_dlist(*stack);
-		free_tokens(data);
+		fprintf(stderr, "L%u: usage: push integer\n", line_num);
+		exit(EXIT_FAILURE);
+	}
+
+	for (i = 0; global_arg[i] != '\0'; i++)
+	{
+		if (!isdigit(global_arg[i]))
+		{
+			fprintf(stderr, "L%u: usage: push integer\n", line_num);
+                	exit(EXIT_FAILURE);
+		}
+	}
+
+	n = atoi(global_arg);
+
+	new_node = malloc(sizeof(stack_t));
+	if (new_node == NULL)
+	{
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	data_num = atoi(data[1]);
-	if (strcmp(data[1], "nil") == 0 || data_num == 0)
-	{
-		free_tokens(lines);
-		free_dlist(*stack);
-		free_tokens(data);
-		free(new_stack);
-		printf("L%d: usage: push integer\n", line_num);
-		exit(EXIT_FAILURE);
-	}
 
-	new_stack->n = data_num;
-	new_stack->prev = NULL;
+	new_node->n = n;
+	new_node->prev = NULL;
+	new_node->next = *stack;
 
-	if (!stack || !(*stack))
-		new_stack->next = NULL;
-
-	else
-	{
-		new_stack->next = *stack;
-		(*stack)->prev = new_stack;
-	}
-	*stack = new_stack;
+	if (*stack != NULL)
+		(*stack)->prev = new_node;
+	*stack = new_node;
 }

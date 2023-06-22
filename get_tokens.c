@@ -1,62 +1,52 @@
 #include "monty.h"
 
 /**
- * get_command_size - get command size to allocate
- * @str: given command
+ * get_tokens - tokenize a string
+ * @str: string to be tokenized
  *
- * Return: command size
-*/
-size_t get_command_size(char *str)
+ * Return: an array of strings
+ */
+char **get_tokens(char *str)
 {
-	int i, is_str = 0;
-	size_t size = 0;
+	char **tokens = NULL, *token = NULL;
+	const char *delim = " \n";
+	int i;
 
-	for (i = 0; str[i]; i++)
+	tokens = malloc(sizeof(char *) * 3);
+
+	if (tokens == NULL)
 	{
-		if (str[i] != ' ' && !is_str)
-		{
-			is_str = 1;
-			size++;
-		}
-		else if (str[i] == ' ' && is_str)
-			is_str = 0;
+		fprintf(stderr, "Error: malloc failed");
+		exit(EXIT_FAILURE);
 	}
-
-	if (size == 3)
-		size--;
-
-	return (size);
+	token = strtok(str, delim);
+	for (i = 0; token; i++)
+	{
+		tokens[i] = strdup(token);
+		token = strtok(NULL, delim);
+	}
+	global_arg = tokens[1];
+	tokens[i] = NULL;
+	return (tokens);
 }
 
 /**
- * get_tokens - get command tokens
- * @str: given command
- * @lines: given file lines to free
- * @stack: given stack to free
+ * free_tokens - frees tokens
+ * @tokens: tokens to be freed
  *
- * Return: command tokens
-*/
-char **get_tokens(char *str, char **lines, stack_t *stack)
+ * Return: nothing
+ */
+void free_tokens(char **tokens)
 {
-	char **command, *token;
+	int i;
 
-	command = malloc(sizeof(char *) * 3);
-	if (!command)
+	if (tokens == NULL)
+		return;
+
+	for (i = 0; tokens[i] != NULL; i++)
 	{
-		free_tokens(lines);
-		free_dlist(stack);
-		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
+		free(tokens[i]);
+		tokens[i] = NULL;
 	}
-
-	token = strtok(str, " \n\t");
-	command[0] = strdup(token);
-	token = strtok(NULL, " \n\t");
-	if (!token)
-		command[1] = strdup("nil");
-	else
-		command[1] = strdup(token);
-	command[2] = NULL;
-
-	return (command);
+	free(tokens);
 }
