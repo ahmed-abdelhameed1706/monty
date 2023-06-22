@@ -23,6 +23,7 @@ int execute(char *cmd, int line_num, stack_t **stack)
 		{"sub", sub},
 		{"div", _div},
 		{"mul", mul},
+		{"mod", mod},
 		{NULL, NULL}
 	};
 
