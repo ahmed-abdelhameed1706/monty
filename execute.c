@@ -20,6 +20,7 @@ int execute(char *cmd, int line_num, stack_t **stack)
 		{"add", add},
 		{"swap", swap},
 		{"pop", pop},
+		{"sub", sub},
 		{NULL, NULL}
 	};
 
