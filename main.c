@@ -1,6 +1,6 @@
 #include "monty.h"
 
-gv_t gv = {NULL, NULL, NULL, NULL};
+gv_t gv;
 
 /**
  * main - entry point to the program
