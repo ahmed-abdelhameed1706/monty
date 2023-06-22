@@ -82,4 +82,5 @@ void free_dlistint(stack_t *head);
 void nop(stack_t **stack, unsigned int line_num);
 void pint(stack_t **stack, unsigned int line_num);
 void add(stack_t **stack, unsigned int line_num);
+void swap(stack_t **stack, unsigned int line_num);
 #endif
