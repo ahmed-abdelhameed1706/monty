@@ -16,6 +16,9 @@ void pall(stack_t **stack, unsigned int line_num)
 
 	(void)line_num;
 
+	if(temp == NULL)
+		return;
+
 	while (temp != NULL)
 	{
 		fprintf(stdout, "%d\n", temp->n);
