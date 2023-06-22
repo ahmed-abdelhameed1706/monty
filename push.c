@@ -12,22 +12,22 @@ void push(stack_t **stack, unsigned int line_num)
 	int i, n;
 	stack_t *new_node;
 
-	if (global_arg == NULL)
+	if (gv.global_arg == NULL)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_num);
 		exit(EXIT_FAILURE);
 	}
 
-	for (i = 0; global_arg[i] != '\0'; i++)
+	for (i = 0; gv.global_arg[i] != '\0'; i++)
 	{
-		if (!isdigit(global_arg[i]))
+		if (!isdigit(gv.global_arg[i]))
 		{
 			fprintf(stderr, "L%u: usage: push integer\n", line_num);
 			exit(EXIT_FAILURE);
 		}
 	}
 
-	n = atoi(global_arg);
+	n = atoi(gv.global_arg);
 
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)

@@ -25,7 +25,7 @@ char **get_tokens(char *str)
 		tokens[i] = strdup(token);
 		token = strtok(NULL, delim);
 	}
-	global_arg = tokens[1];
+	gv.global_arg = tokens[1];
 	tokens[i] = NULL;
 	return (tokens);
 }

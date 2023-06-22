@@ -43,8 +43,21 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct global_variables - contains the global variables
+ * @global_arg: arg to be passed everywhere
+ * @line: line to be freed
+ *
+ * Description: global variables 
+ */
+typedef struct global_variables
+{
+	char *global_arg;
+	char *line;
+} gv_t;
+
 /* Global Variables */
-extern char *global_arg;
+extern gv_t gv;
 
 /* Prototypes */
 int isdigit(int arg);
