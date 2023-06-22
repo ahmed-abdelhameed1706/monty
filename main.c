@@ -11,7 +11,7 @@ gv_t gv;
  */
 int main(int argc, char **argv)
 {
-	char **lines = NULL, *line = NULL, **tokens = NULL, *comment;
+	char **lines = NULL, *line = NULL, **tokens = NULL;
 	int i;
 	stack_t *stack = NULL;
 
@@ -27,8 +27,8 @@ int main(int argc, char **argv)
 	for (i = 0; lines[i]; i++)
 	{
 		line = remove_spaces(lines[i]);
-		comment = strchr(line, '#');
-		if (strcmp(line, "") != 0 && !comment)
+		
+		if (strcmp(line, "") != 0 && line[0] != '#')
 		{
 			tokens = get_tokens(line);
 			free(line);
