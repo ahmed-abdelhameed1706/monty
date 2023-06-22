@@ -47,11 +47,14 @@ void push(stack_t **stack, unsigned int line_num)
 		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
 	}
+
 	new_node->n = n;
 	new_node->prev = NULL;
-	new_node->next = *stack;
-
-	if (*stack != NULL)
+	new_node->next = NULL;
+	if (*stack)
+	{
 		(*stack)->prev = new_node;
+		new_node->next = *stack;
+	}
 	*stack = new_node;
 }
