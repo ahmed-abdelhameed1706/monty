@@ -23,7 +23,7 @@ void push(stack_t **stack, unsigned int line_num)
 		if (!isdigit(global_arg[i]))
 		{
 			fprintf(stderr, "L%u: usage: push integer\n", line_num);
-                	exit(EXIT_FAILURE);
+			exit(EXIT_FAILURE);
 		}
 	}
 

@@ -24,7 +24,6 @@ char **read_file(char *filename)
 		lines_count++;
 
 	fseek(file, 0, SEEK_SET);
-
 	lines = malloc(sizeof(char *) * (lines_count + 1));
 
 	if (lines == NULL)
@@ -32,7 +31,6 @@ char **read_file(char *filename)
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-
 	while (getline(&line, &n, file) != -1)
 	{
 		lines[i] = malloc(sizeof(char) * (strlen(line) + 1));

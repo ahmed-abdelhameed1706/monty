@@ -27,5 +27,5 @@ int execute(char *cmd, int line_num, stack_t **stack)
 		}
 	}
 	fprintf(stderr, "L%u: unknown instruction %s\n", line_num, cmd);
-	return (EXIT_FAILURE);	
+	return (EXIT_FAILURE);
 }

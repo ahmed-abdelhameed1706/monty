@@ -35,7 +35,7 @@ int main(int argc, char **argv)
 			execute(tokens[0], i + 1, &stack);
 			free_tokens(tokens);
 		}
-		free(line);	
+		free(line);
 	}
 	free(line);
 	free(global_arg);
