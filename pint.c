@@ -1,5 +1,12 @@
 #include "monty.h"
 
+/**
+ * pint - prints an int
+ * @stack: stack
+ * @line_num: line number
+ *
+ * Return: nothing
+ */
 void pint(stack_t **stack, unsigned int line_num)
 {
 	if (*stack == NULL)
