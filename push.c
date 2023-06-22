@@ -9,7 +9,7 @@
  */
 void push(stack_t **stack, unsigned int line_num)
 {
-	int i, n;
+	int i = 0, n;
 	stack_t *new_node;
 
 	if (gv.global_arg == NULL)
@@ -22,9 +22,11 @@ void push(stack_t **stack, unsigned int line_num)
 	}
 	else
 	{
-		for (i = 0; gv.global_arg[i] != '\0'; i++)
+		if (gv.global_arg[0] == '-')
+			i++;
+		for (; gv.global_arg[i] != '\0'; i++)
 		{
-			if (!isdigit(gv.global_arg[i]) && gv.global_arg[i] != '-')
+			if (!isdigit(gv.global_arg[i]))
 			{
 				fprintf(stderr, "L%u: usage: push integer\n", line_num);
 				free_tokens(gv.tokens);
