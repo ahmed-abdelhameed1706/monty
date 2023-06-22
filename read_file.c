@@ -16,7 +16,6 @@ char **read_file(char *filename)
 	if (file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
-		fclose(file);
 		exit(EXIT_FAILURE);
 	}
 
