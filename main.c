@@ -1,6 +1,6 @@
 #include "monty.h"
 
-gv_t gv;
+gv_t gv = {NULL, NULL, NULL, NULL};
 
 /**
  * main - entry point to the program
@@ -38,8 +38,7 @@ int main(int argc, char **argv)
 		else
 			free(line);
 	}
-	free(line);
-	free(gv.global_arg);
+
 	free_dlistint(stack);
 	free_tokens(lines);
 	return (0);
