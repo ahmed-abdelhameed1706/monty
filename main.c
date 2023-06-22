@@ -27,7 +27,7 @@ int main(int argc, char **argv)
 	for (i = 0; lines[i]; i++)
 	{
 		line = remove_spaces(lines[i]);
-		
+
 		if (strcmp(line, "") != 0 && line[0] != '#')
 		{
 			tokens = get_tokens(line);

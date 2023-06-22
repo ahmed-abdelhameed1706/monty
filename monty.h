@@ -90,4 +90,5 @@ void _div(stack_t **stack, unsigned int line_num);
 void add_node(stack_t **stack, int data);
 void mul(stack_t **stack, unsigned int line_num);
 void mod(stack_t **stack, unsigned int line_num);
+void pchar(stack_t **stack, unsigned int line_num);
 #endif
