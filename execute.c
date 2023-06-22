@@ -15,6 +15,7 @@ int execute(char *cmd, int line_num, stack_t **stack)
 	instruction_t op_list[] = {
 		{"push", push},
 		{"pall", pall},
+		{"nop", nop},
 		{NULL, NULL}
 	};
 
