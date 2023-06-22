@@ -22,11 +22,11 @@ int main(int argc, char **argv)
 	}
 
 	lines = read_file(argv[1]);
+	gv.lines = lines;
 
 	for (i = 0; lines[i]; i++)
 	{
 		line = remove_spaces(lines[i]);
-		free(lines[i]);
 		if (strcmp(line, "") != 0)
 		{
 			tokens = get_tokens(line);

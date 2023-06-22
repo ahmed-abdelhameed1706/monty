@@ -56,6 +56,7 @@ typedef struct global_variables
 	char *global_arg;
 	char *line;
 	char **tokens;
+	char **lines;
 } gv_t;
 
 /* Global Variables */

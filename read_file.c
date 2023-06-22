@@ -13,7 +13,6 @@ char **read_file(char *filename)
 	size_t n = 0, i = 0, lines_count = 0;
 
 	file = fopen(filename, "r");
-
 	if (file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
