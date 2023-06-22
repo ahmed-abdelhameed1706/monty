@@ -1,12 +1,13 @@
 #include "monty.h"
 
+
 /**
- * pop - pop top node from the stack
- * @stack: given stack
- * @line_num: given file command line
+ * pop - removes element
+ * @stack: stack to remove element from
+ * @line_num: line number
  *
- * Return: Nothing
-*/
+ * Return: nothing
+ */
 void pop(stack_t **stack, unsigned int line_num)
 {
 	stack_t *temp;

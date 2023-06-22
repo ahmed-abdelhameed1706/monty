@@ -1,22 +1,22 @@
 #include "monty.h"
 
 /**
- * _div - div 2 n from stack
+ * mod - mod the remaining of the division of 2 n from stack
  * @stack: stack to be added from
  * @line_num : line number
  *
  * Return: Nothing
  */
-void _div(stack_t **stack, unsigned int line_num)
+void mod(stack_t **stack, unsigned int line_num)
 {
 	stack_t *temp;
-	int div;
+	int mod;
 
 	temp = *stack;
 
 	if (temp == NULL || temp->next == NULL)
 	{
-		fprintf(stderr, "L%u: can't div, stack too short\n", line_num);
+		fprintf(stderr, "L%u: can't mod, stack too short\n", line_num);
 		free_dlistint(*stack);
 		free_tokens(gv.tokens);
 		free_tokens(gv.lines);
@@ -32,8 +32,8 @@ void _div(stack_t **stack, unsigned int line_num)
 		exit(EXIT_FAILURE);
 	}
 
-	div = temp->next->n / temp->n;
-	temp->next->n = div;
+	mod = temp->next->n % temp->n;
+	temp->next->n = mod;
 	*stack = temp->next;
 	free(temp);
 }
