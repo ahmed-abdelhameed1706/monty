@@ -20,7 +20,6 @@ void push(stack_t **stack, unsigned int line_num)
 		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
 	}
-
 	for (i = 0; gv.global_arg[i] != '\0'; i++)
 	{
 		if (!isdigit(gv.global_arg[i]))
@@ -32,7 +31,6 @@ void push(stack_t **stack, unsigned int line_num)
 			exit(EXIT_FAILURE);
 		}
 	}
-
 	n = atoi(gv.global_arg);
 
 	new_node = malloc(sizeof(stack_t));
@@ -44,7 +42,6 @@ void push(stack_t **stack, unsigned int line_num)
 		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
 	}
-
 	new_node->n = n;
 	new_node->prev = NULL;
 	new_node->next = *stack;
